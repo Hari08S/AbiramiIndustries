@@ -1,0 +1,141 @@
+/* ============================================
+   FLOATING WHATSAPP BUTTON STYLES
+   ============================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1500;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  animation: slideInUp 0.5s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.whatsapp-btn:hover {
+  background: #22c55e;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* Pulse Animation */
+.whatsapp-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: whatsapp-ring 2s ease-out infinite;
+}
+
+@keyframes whatsapp-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Tooltip */
+.whatsapp-tooltip {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  max-width: 220px;
+  animation: fadeInLeft 0.4s ease;
+  border: 1px solid var(--border-light);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  bottom: 20px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  transform: rotate(-45deg);
+}
+
+.tooltip-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  color: var(--text-light);
+  padding: 4px;
+  transition: color var(--transition-base);
+}
+
+.tooltip-close:hover {
+  color: var(--text-primary);
+}
+
+.tooltip-text {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.4;
+  padding-right: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .whatsapp-btn {
+    width: 54px;
+    height: 54px;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
