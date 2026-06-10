@@ -12,23 +12,18 @@ const Gallery = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+            entry.target.querySelectorAll('.reveal').forEach(el => {
+              el.classList.add('active');
+            });
           }
         });
       },
-      { threshold: 0.05, rootMargin: '50px' }
+      { threshold: 0.1 }
     );
 
-    // Observe the section header
     if (sectionRef.current) {
-      sectionRef.current.querySelectorAll('.section-header.reveal').forEach(el => {
-        observer.observe(el);
-      });
+      observer.observe(sectionRef.current);
     }
-
-    // Observe each gallery item individually so they reveal as they scroll into view
-    const galleryItems = document.querySelectorAll('.gallery-item.reveal');
-    galleryItems.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -133,7 +128,7 @@ const Gallery = () => {
         <div className="gallery-grid">
           {galleryImages.map((image, index) => (
             <div
-              className={`gallery-item reveal ${index === 0 ? 'gallery-item-large' : ''}`}
+              className={`gallery-item ${index === 0 ? 'gallery-item-large' : ''}`}
               key={index}
               onClick={() => openLightbox(index)}
               style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'var(--white)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', transition: 'all var(--transition-base)' }}

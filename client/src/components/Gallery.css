@@ -207,4 +207,50 @@
     grid-column: span 1;
     grid-row: span 1;
   }
+
+  .lightbox-content {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .lightbox-image {
+    max-width: 95vw;
+    max-height: 70vh;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox-close {
+    top: -40px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightbox-prev {
+    left: 4px;
+  }
+
+  .lightbox-next {
+    right: 4px;
+  }
+
+  .lightbox-nav {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightbox-info {
+    bottom: -40px;
+    gap: 10px;
+    width: 90vw;
+    justify-content: center;
+  }
+
+  .lightbox-caption {
+    font-size: 0.85rem;
+  }
+
+  .lightbox-counter {
+    font-size: 0.75rem;
+  }
 }
