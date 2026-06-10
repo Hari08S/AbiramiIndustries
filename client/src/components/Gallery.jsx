@@ -12,18 +12,23 @@ const Gallery = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el, i) => {
-              setTimeout(() => el.classList.add('active'), i * 80);
-            });
+            entry.target.classList.add('active');
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
+    // Observe the section header
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      sectionRef.current.querySelectorAll('.section-header.reveal').forEach(el => {
+        observer.observe(el);
+      });
     }
+
+    // Observe each gallery item individually so they reveal as they scroll into view
+    const galleryItems = document.querySelectorAll('.gallery-item.reveal');
+    galleryItems.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
